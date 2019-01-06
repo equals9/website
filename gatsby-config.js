@@ -11,5 +11,6 @@ module.exports = {
         fonts: [`roboto`, `spectral`],
       },
     },
+    [`gatsby-plugin-netlify`],
   ],
 }
