@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Tachyons',
+    title: 'Daniel Wirtz – Digital Maker',
   },
   plugins: ['gatsby-plugin-react-helmet'],
   plugins: [`gatsby-plugin-postcss`],
