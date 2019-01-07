@@ -24,7 +24,7 @@ const IndexPage = () => (
           pizza dough. Pizza dough is like life. If you take care of it and do
           it with passion, it eventually becomes something great.
         </p>
-        <div className="flex justify-between items-center bg-light-gray br-pill">
+        <div className="flex justify-between mb3 mb0-ns items-center bg-light-gray br-pill">
           <a
             class="f4 grow no-underline br-pill ph4 pv2 dib white bg-gold"
             href="#0"
