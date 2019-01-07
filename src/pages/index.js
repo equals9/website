@@ -17,9 +17,9 @@ const IndexPage = () => (
           <span className="gold"> making things</span>.
         </h1>
         <p className="measure">
-          I'm building digital products using Design Sprints, new technolgy and
-          cool people Crisp Studio. Im facinated by technolgy and its
-          oppertunitys and always open for deep topics. In my spare time I love
+          I'm building digital products with Design Sprints, new technology and
+          cool people Crisp Studio. I'm fascinated by technology and its
+          oppertunitys and always open for deep topics. In my spare time, I love
           to invest time into random hobbies like card magic and making good
           pizza dough. Pizza dough is like life. If you take care of it and do
           it with passion, it eventually becomes something great.
