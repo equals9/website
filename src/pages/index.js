@@ -18,7 +18,7 @@ const IndexPage = () => (
         </h1>
         <p className="measure">
           I'm building digital products with Design Sprints, new technology and
-          cool people Crisp Studio. I'm fascinated by technology and its
+          cool people at Crisp Studio. I'm fascinated by technology and its
           oppertunitys and always open for deep topics. In my spare time, I love
           to invest time into random hobbies like card magic and making good
           pizza dough. Pizza dough is like life. If you take care of it and do
@@ -27,7 +27,7 @@ const IndexPage = () => (
         <div className="flex justify-between mb3 mb0-ns items-center bg-light-gray br-pill">
           <a
             class="f4 grow no-underline br-pill ph4 pv2 dib white bg-gold"
-            href="#0"
+            href="mailto:danielwirtzx+website@gmail.com"
           >
             Say hi ☺︎
           </a>
