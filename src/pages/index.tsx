@@ -1,12 +1,13 @@
 import React from "react";
-import { Link } from "gatsby";
+import Welcome from "../components/welcome";
+import { Layout, Section } from "../components/common";
 
-const IndexPage = () => (
-  <div>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <Link to="/page-2/">Go to page 2</Link>
-  </div>
+const Index = () => (
+  <Layout>
+    <Section background="light-1" pad={{ vertical: "xlarge" }}>
+      <Welcome />
+    </Section>
+  </Layout>
 );
 
-export default IndexPage;
+export default Index;
