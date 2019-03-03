@@ -3,6 +3,7 @@ require("dotenv-safe").config();
 module.exports = {
   siteMetadata: {
     title: `Daniel Wirtz`,
+    siteUrl: `https://www.danielwirtz.com`,
     description: `Designer & Developer`,
     author: `@wirtzdan`
   },
