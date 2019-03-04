@@ -11,7 +11,7 @@ const Photography = ({ data }) => (
           ...node.image.childImageSharp.fluid,
           caption: `${node.title} – ${node.author}`
         }))}
-        itemsPerRow={[2, 3]}
+        itemsPerRow={[3, 4]}
       />
     </Section>
   </Layout>
