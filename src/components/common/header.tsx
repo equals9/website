@@ -3,22 +3,13 @@ import { Box, Text } from "grommet";
 import { Section } from "./index";
 import Link from "./link";
 import styled from "styled-components";
+import Logo from "./logo";
 
 const Header = () => (
   <Section pad={{ vertical: "medium" }} background="light-1">
     <Box direction="row" justify="between" align="center">
-      <Box>
-        <StyledLink
-          to="/"
-          color="dark-3"
-          label={
-            <Text>
-              <Text color="brand">DW</Text>
-            </Text>
-          }
-        />
-      </Box>
-      <Box direction="row-responsive" gap="medium">
+      <Link to="/" label={<Logo />} />
+      <Box direction="row" gap="medium">
         <StyledLink
           to="/about"
           color="dark-3"
