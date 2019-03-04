@@ -37,15 +37,6 @@ const Header = () => (
             </Text>
           }
         />
-        <StyledLink
-          to="/contact"
-          color="dark-3"
-          label={
-            <Text>
-              <Text color="brand">03.</Text> Contact
-            </Text>
-          }
-        />
       </Box>
     </Box>
   </Section>
