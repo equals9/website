@@ -5,7 +5,7 @@ import { Container } from "../common/";
 const Footer = () => (
   <Box background="dark-1" pad={{ vertical: "small" }}>
     <Container>
-      <Text textAlign="center">Designed and build by Daniel Wirtz</Text>
+      <Text textAlign="center">Designed and built by Daniel Wirtz</Text>
     </Container>
   </Box>
 );
