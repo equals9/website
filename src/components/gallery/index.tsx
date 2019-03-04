@@ -1,7 +1,7 @@
 import Image from "gatsby-image";
 import React from "react";
 import styled from "styled-components";
-import { Box } from "grommet";
+import { Box } from "rebass";
 import { chunk, sum } from "lodash";
 
 const Gallery = ({ images, itemsPerRow: itemsPerRowByBreakpoints = [1] }) => {
@@ -15,14 +15,17 @@ const Gallery = ({ images, itemsPerRow: itemsPerRowByBreakpoints = [1] }) => {
   );
 
   return (
-    <div>
+    <StyledGalleryWrapper>
       {images.map((image, i) => (
         <StyledBox
+          key={image.src}
           as={Image}
           fluid={image}
           title={image.caption}
           width={rowAspectRatioSumsByBreakpoints.map(
+            // Return a value for each breakpoint
             (rowAspectRatioSums, j) => {
+              // Find out which row the image is in and get its aspect ratio sum
               const rowIndex = Math.floor(i / itemsPerRowByBreakpoints[j]);
               const rowAspectRatioSum = rowAspectRatioSums[rowIndex];
 
@@ -31,7 +34,7 @@ const Gallery = ({ images, itemsPerRow: itemsPerRowByBreakpoints = [1] }) => {
           )}
         />
       ))}
-    </div>
+    </StyledGalleryWrapper>
   );
 };
 
@@ -39,8 +42,14 @@ const StyledBox = styled(Box)`
   display: inline-block;
   vertical-align: middle;
   transition: filter 0.3s;
-  :hover {
-    filter: brightness(87.5%);
+  border-radius: 6px;
+`;
+
+const StyledGalleryWrapper = styled(Box)`
+  margin: -1em;
+
+  & > * {
+    padding: 1em;
   }
 `;
 
