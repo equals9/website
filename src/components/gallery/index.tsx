@@ -19,8 +19,6 @@ const Gallery = ({ images, itemsPerRow: itemsPerRowByBreakpoints = [1] }) => {
       {images.map((image, i) => (
         <StyledBox
           key={image.src}
-          as={Image}
-          fluid={image}
           title={image.caption}
           width={rowAspectRatioSumsByBreakpoints.map(
             // Return a value for each breakpoint
@@ -32,7 +30,9 @@ const Gallery = ({ images, itemsPerRow: itemsPerRowByBreakpoints = [1] }) => {
               return `${(image.aspectRatio / rowAspectRatioSum) * 100}%`;
             }
           )}
-        />
+        >
+          <Image fluid={image} />
+        </StyledBox>
       ))}
     </StyledGalleryWrapper>
   );
@@ -43,14 +43,12 @@ const StyledBox = styled(Box)`
   vertical-align: middle;
   transition: filter 0.3s;
   border-radius: 6px;
+
+  padding: 1em;
 `;
 
 const StyledGalleryWrapper = styled(Box)`
   margin: -1em;
-
-  & > * {
-    padding: 1em;
-  }
 `;
 
 export default Gallery;

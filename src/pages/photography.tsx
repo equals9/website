@@ -7,9 +7,8 @@ const Photography = ({ data }) => (
   <Layout>
     <Section>
       <Gallery
-        images={data.allGalleryYaml.edges.map(({ node }) => ({
-          ...node.image.childImageSharp.fluid,
-          caption: `${node.title} – ${node.author}`
+        images={data.googlePhotos.edges.map(({ node }) => ({
+          ...node.baseUrl
         }))}
         itemsPerRow={[3, 4]}
       />
@@ -18,22 +17,14 @@ const Photography = ({ data }) => (
 );
 
 export const query = graphql`
-  query {
-    allGalleryYaml {
+  query photoQuery {
+    googlePhotos: allGooglePhoto {
       edges {
         node {
-          title
-          author
-          image {
-            childImageSharp {
-              fluid {
-                aspectRatio
-
-                # Use gatsby-image later for better user experience
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
+          id
+          albumTitle
+          baseUrl
+          filename
         }
       }
     }
