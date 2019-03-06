@@ -22,10 +22,26 @@ module.exports = {
         traktApiKey: process.env.TRAKT_API_KEY,
         username: "wirtzdan",
         tmdbApiKey: process.env.TMDB_API_KEY,
-        language: "en-US"
+        limit: 10
       }
     },
     `gatsby-plugin-transition-link`,
+    {
+      resolve: `gatsby-source-google-photos`,
+      options: {
+        clientId: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        albums: ["Webseite"]
+        // if you only have one album pass it as an array
+      }
+    },
+    {
+      resolve: `gatsby-plugin-remote-images`,
+      options: {
+        nodeType: "GooglePhoto",
+        imagePath: "baseUrl"
+      }
+    },
     {
       resolve: `gatsby-source-spotify`,
       options: {
