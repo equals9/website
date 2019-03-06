@@ -1,22 +1,32 @@
 import React from "react";
 import SocialLinks from "./social-links";
-import styled from "styled-components";
+import styled from "../../util/styled-components";
 import { Anchor, Box, Heading } from "grommet";
+import ThemeContext from "../../util/context";
 
 const Welcome = () => (
-  <Box gap="large">
-    <Box gap="xsmall">
-      <StyledHeading color="brand" size="small" margin="none">
-        Hey, I'm Daniel. Nice to meet you.
-      </StyledHeading>
-      <Heading margin="none">
-        I'm a Designer, Developer and Co-Founder at{" "}
-        <StyledAnchor>Crisp Studio</StyledAnchor>. I'm passionate about tech,
-        good food and inspiring movies.
-      </Heading>
-    </Box>
-    <SocialLinks />
-  </Box>
+  <ThemeContext.Consumer>
+    {dark => (
+      <Box gap="large">
+        <Box gap="xsmall">
+          <StyledHeading color="brand" size="small" margin="none">
+            Hey, I'm Daniel. Nice to meet you.
+          </StyledHeading>
+          <Heading margin="none">
+            I'm a Designer, Developer and Co-Founder at{" "}
+            <StyledAnchor
+              color={dark ? "light-1" : "dark-3"}
+              href="https://crisp.studio"
+            >
+              Crisp Studio
+            </StyledAnchor>
+            . I'm passionate about tech, good food and inspiring movies.
+          </Heading>
+        </Box>
+        <SocialLinks />
+      </Box>
+    )}
+  </ThemeContext.Consumer>
 );
 
 const StyledHeading = styled(Heading)`
@@ -25,12 +35,11 @@ const StyledHeading = styled(Heading)`
 `;
 
 const StyledAnchor = styled(Anchor)`
-  color: #515151;
   text-decoration: underline;
-  text-decoration-color: #01d274;
+  text-decoration-color: ${p => p.theme.global.colors["accent-1"]};
 
   &:hover {
-    text-decoration-color: #01d274;
+    text-decoration-color: ${p => p.theme.global.colors["accent-1"]};
   }
 `;
 

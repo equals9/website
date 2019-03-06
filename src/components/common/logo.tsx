@@ -1,11 +1,16 @@
 import React from "react";
 import { Box } from "grommet";
 import styled from "styled-components";
-import logo from "../../content/images/logo-round.svg";
+import logoLight from "../../content/images/logo-light.svg";
+import logoDark from "../../content/images/logo-dark.svg";
 
-const Logo = () => (
+interface LogoProps {
+  dark?: boolean;
+}
+
+const Logo: React.SFC<LogoProps> = ({ dark }) => (
   <LogoContainer>
-    <img src={logo} />
+    <img src={dark ? logoLight : logoDark} />
   </LogoContainer>
 );
 
