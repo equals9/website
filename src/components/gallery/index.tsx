@@ -5,7 +5,11 @@ import { Box } from "rebass";
 import { chunk, sum } from "lodash";
 
 const Gallery = ({ images, itemsPerRow: itemsPerRowByBreakpoints = [1] }) => {
-  const aspectRatios = images.map(image => image.aspectRatio);
+  const aspectRatios = images.map(image => {
+    return image.mediaMetadata.width / image.mediaMetadata.height;
+  });
+
+  console.log("TCL: Gallery -> aspectRatios", aspectRatios);
 
   const rowAspectRatioSumsByBreakpoints = itemsPerRowByBreakpoints.map(
     itemsPerRow =>
@@ -18,20 +22,20 @@ const Gallery = ({ images, itemsPerRow: itemsPerRowByBreakpoints = [1] }) => {
     <StyledGalleryWrapper>
       {images.map((image, i) => (
         <StyledBox
-          key={image.src}
-          title={image.caption}
           width={rowAspectRatioSumsByBreakpoints.map(
             // Return a value for each breakpoint
             (rowAspectRatioSums, j) => {
               // Find out which row the image is in and get its aspect ratio sum
               const rowIndex = Math.floor(i / itemsPerRowByBreakpoints[j]);
               const rowAspectRatioSum = rowAspectRatioSums[rowIndex];
+              const imgAspectRatio =
+                image.mediaMetadata.width / image.mediaMetadata.height;
 
-              return `${(image.aspectRatio / rowAspectRatioSum) * 100}%`;
+              return `${(imgAspectRatio / rowAspectRatioSum) * 100}%`;
             }
           )}
         >
-          <Image fluid={image} />
+          <img src={image.baseUrl} />
         </StyledBox>
       ))}
     </StyledGalleryWrapper>
@@ -44,11 +48,11 @@ const StyledBox = styled(Box)`
   transition: filter 0.3s;
   border-radius: 6px;
 
-  padding: 1em;
+  padding: 1rem;
 `;
 
 const StyledGalleryWrapper = styled(Box)`
-  margin: -1em;
+  margin: -1rem;
 `;
 
 export default Gallery;

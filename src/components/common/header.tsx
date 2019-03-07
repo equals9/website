@@ -15,7 +15,7 @@ const Header: React.SFC<HeaderProps> = ({ setDark }) => (
     {dark => (
       <Section
         pad={{ vertical: "medium" }}
-        background={dark ? "dark-2" : "light-1"}
+        background={dark ? "dark-1" : "light-1"}
       >
         <Box direction="row" justify="between" align="center">
           <Link to="/" label={dark ? <Logo dark /> : <Logo />} />
