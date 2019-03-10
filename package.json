@@ -47,6 +47,7 @@
     "lodash": "^4.17.11",
     "markdown-to-jsx": "^6.9.1",
     "react": "^16.7.0",
+    "react-burgers": "^1.2.0",
     "react-dom": "^16.7.0",
     "react-feather": "^1.1.6",
     "react-helmet": "^5.2.0",
