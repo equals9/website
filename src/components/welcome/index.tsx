@@ -6,7 +6,7 @@ import ThemeContext from "../../util/context";
 
 const Welcome = () => (
   <ThemeContext.Consumer>
-    {dark => (
+    {theme => (
       <Box gap="large">
         <Box gap="xsmall">
           <StyledHeading color="brand" size="small" margin="none">
@@ -15,7 +15,7 @@ const Welcome = () => (
           <Heading margin="none">
             I'm a Designer, Developer and Co-Founder at{" "}
             <StyledAnchor
-              color={dark ? "light-1" : "dark-3"}
+              color={theme.dark ? "light-1" : "dark-3"}
               href="https://crisp.studio"
             >
               Crisp Studio
@@ -31,7 +31,7 @@ const Welcome = () => (
 
 const StyledHeading = styled(Heading)`
   font-weight: 400;
-  font-family: "Libre Baskerville", serif;
+  font-family: "Inconsolata", monospace;
 `;
 
 const StyledAnchor = styled(Anchor)`

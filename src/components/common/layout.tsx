@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { Grommet } from "grommet";
 import { createGlobalStyle } from "styled-components";
 import { Header, Footer } from "./";
-import theme from "../../theme";
+import wirtz from "../../theme";
 import useThemeToggle from "../../util/theme-toggle";
 import ThemeContext from "../../util/context";
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://rsms.me/inter/inter.css');
-  @import url('https://fonts.googleapis.com/css?family=Libre+Baskerville');
+  @import url('https://fonts.googleapis.com/css?family=Inconsolata');
   
   img {
     max-width: 100%;
@@ -26,17 +26,17 @@ interface LayoutProps {
 }
 
 const Layout: React.SFC<LayoutProps> = ({ children }) => {
-  const [dark, setDark] = useState(false);
-
   return (
-    <ThemeContext.Provider value={dark}>
-      <Grommet theme={theme}>
-        <GlobalStyle />
-        <Header setDark={setDark} />
-        <main>{children}</main>
-        <Footer />
-      </Grommet>
-    </ThemeContext.Provider>
+    <ThemeContext.Consumer>
+      {theme => (
+        <Grommet theme={wirtz}>
+          <GlobalStyle />
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </Grommet>
+      )}
+    </ThemeContext.Consumer>
   );
 };
 

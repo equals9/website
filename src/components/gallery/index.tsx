@@ -2,6 +2,7 @@ import Image from "gatsby-image";
 import React from "react";
 import styled from "styled-components";
 import { Box } from "rebass";
+import { Text } from "grommet";
 import { chunk, sum } from "lodash";
 
 const Gallery = ({ images, itemsPerRow: itemsPerRowByBreakpoints = [1] }) => {
@@ -21,22 +22,27 @@ const Gallery = ({ images, itemsPerRow: itemsPerRowByBreakpoints = [1] }) => {
   return (
     <StyledGalleryWrapper>
       {images.map((image, i) => (
-        <StyledBox
-          width={rowAspectRatioSumsByBreakpoints.map(
-            // Return a value for each breakpoint
-            (rowAspectRatioSums, j) => {
-              // Find out which row the image is in and get its aspect ratio sum
-              const rowIndex = Math.floor(i / itemsPerRowByBreakpoints[j]);
-              const rowAspectRatioSum = rowAspectRatioSums[rowIndex];
-              const imgAspectRatio =
-                image.mediaMetadata.width / image.mediaMetadata.height;
+        <>
+          <StyledBox
+            width={rowAspectRatioSumsByBreakpoints.map(
+              // Return a value for each breakpoint
+              (rowAspectRatioSums, j) => {
+                // Find out which row the image is in and get its aspect ratio sum
+                const rowIndex = Math.floor(i / itemsPerRowByBreakpoints[j]);
+                const rowAspectRatioSum = rowAspectRatioSums[rowIndex];
+                const imgAspectRatio =
+                  image.mediaMetadata.width / image.mediaMetadata.height;
 
-              return `${(imgAspectRatio / rowAspectRatioSum) * 100}%`;
-            }
-          )}
-        >
-          <img src={image.baseUrl} />
-        </StyledBox>
+                return `${(imgAspectRatio / rowAspectRatioSum) * 100}%`;
+              }
+            )}
+          >
+            <StyledImg src={image.baseUrl} />
+            <Text color="light-5" size="xsmall">
+              {image.mediaMetadata.creationTime}
+            </Text>
+          </StyledBox>
+        </>
       ))}
     </StyledGalleryWrapper>
   );
@@ -49,6 +55,10 @@ const StyledBox = styled(Box)`
   border-radius: 6px;
 
   padding: 1rem;
+`;
+
+const StyledImg = styled.img`
+  border-radius: 4px;
 `;
 
 const StyledGalleryWrapper = styled(Box)`

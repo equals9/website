@@ -10,6 +10,11 @@ const SocialLinks = () => (
       icon={<Twitter />}
       hoverIndicator="#e5effa"
     />
+    <StyledLinkedIn
+      href="https://www.linkedin.com/in/wirtzdan/"
+      icon={<Linkedin />}
+      hoverIndicator="#e3f8fa"
+    />
     <StyledGitHub
       href="https://github.com/wirtzdan"
       icon={<GitHub />}
@@ -19,11 +24,6 @@ const SocialLinks = () => (
       href="https://instagram.com/danielwirtz"
       icon={<Instagram />}
       hoverIndicator="#f9efe2"
-    />
-    <StyledLinkedIn
-      href="https://www.linkedin.com/in/wirtzdan/"
-      icon={<Linkedin />}
-      hoverIndicator="#e3f8fa"
     />
   </Box>
 );

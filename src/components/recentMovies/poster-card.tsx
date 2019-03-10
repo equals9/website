@@ -1,5 +1,5 @@
 import React from "react";
-import { Box } from "grommet";
+import { Box, Text } from "grommet";
 import Image from "gatsby-image";
 import styled from "styled-components";
 
@@ -15,7 +15,9 @@ const PosterCard = ({ image, last_watched_at }) => (
     >
       <StyledImage fluid={image} />
     </Box>
-    <p>{last_watched_at}</p>
+    <Text color="light-5" size="small">
+      {last_watched_at}
+    </Text>
   </Box>
 );
 

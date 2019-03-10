@@ -7,9 +7,9 @@ const Index = () => {
   return (
     <Layout>
       <ThemeContext.Consumer>
-        {dark => (
+        {theme => (
           <Section
-            background={dark ? "dark-1" : "light-1"}
+            background={theme.dark ? "dark-1" : "light-1"}
             pad={{ vertical: "xlarge" }}
           >
             <Welcome />

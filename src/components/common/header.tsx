@@ -6,43 +6,39 @@ import styled from "styled-components";
 import Logo from "./logo";
 import ThemeContext from "../../util/context";
 
-interface HeaderProps {
-  setDark?: (value: boolean) => void;
-}
-
-const Header: React.SFC<HeaderProps> = ({ setDark }) => (
+const Header: React.SFC = () => (
   <ThemeContext.Consumer>
-    {dark => (
+    {theme => (
       <Section
         pad={{ vertical: "medium" }}
-        background={dark ? "dark-1" : "light-1"}
+        background={theme.dark ? "dark-1" : "light-1"}
       >
         <Box direction="row" justify="between" align="center">
-          <Link to="/" label={dark ? <Logo dark /> : <Logo />} />
+          <Link to="/" label={theme.dark ? <Logo dark /> : <Logo />} />
           <Box direction="row" gap="medium">
             <StyledLink
               to="/about"
-              color={dark ? "light-1" : "dark-3"}
+              color={theme.dark ? "light-1" : "dark-3"}
               label={
                 <Text>
-                  <Text color="brand">01.</Text> About
+                  <Prefix weight="normal" color="brand">
+                    01.
+                  </Prefix>{" "}
+                  About
                 </Text>
               }
             />
             <StyledLink
               to="/photography"
-              color={dark ? "light-1" : "dark-3"}
+              color={theme.dark ? "light-1" : "dark-3"}
               label={
                 <Text>
-                  <Text color="brand">02.</Text> Photography
+                  <Prefix weight="normal" color="brand">
+                    02.
+                  </Prefix>{" "}
+                  Photography
                 </Text>
               }
-            />
-            <CheckBox
-              label={dark ? "Dark" : "Light"}
-              checked={dark}
-              onChange={() => setDark(!dark)}
-              toggle
             />
           </Box>
         </Box>
@@ -50,6 +46,11 @@ const Header: React.SFC<HeaderProps> = ({ setDark }) => (
     )}
   </ThemeContext.Consumer>
 );
+
+const Prefix = styled(Text)`
+  text-transform: uppercase;
+  font-family: "Inconsolata", monospace;
+`;
 
 const StyledLink = styled(Link)`
   text-decoration: none;
