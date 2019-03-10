@@ -8,14 +8,15 @@ module.exports = {
     author: `@wirtzdan`
   },
   plugins: [
+    `gatsby-plugin-typescript`,
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `./src/content/`
       }
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-transformer-yaml`,
     {
       resolve: `gatsby-source-trakt-tmdb`,
       options: {
@@ -25,21 +26,12 @@ module.exports = {
         tmdbApiKey: process.env.TMDB_API_KEY
       }
     },
-    `gatsby-plugin-transition-link`,
     {
       resolve: `gatsby-source-google-photos`,
       options: {
         clientId: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
         albums: ["Webseite2"]
-        // if you only have one album pass it as an array
-      }
-    },
-    {
-      resolve: `gatsby-plugin-remote-images`,
-      options: {
-        nodeType: "GooglePhoto",
-        imagePath: "baseUrl"
       }
     },
     {
@@ -54,16 +46,23 @@ module.exports = {
         timeRanges: ["short_term", "medium_term", "long_term"]
       }
     },
+    {
+      resolve: `gatsby-plugin-remote-images`,
+      options: {
+        nodeType: "GooglePhoto",
+        imagePath: "baseUrl"
+      }
+    },
     `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+    `gatsby-transformer-yaml`,
+    `gatsby-plugin-transition-link`,
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: ""
       }
     },
-    `gatsby-plugin-offline`,
-    `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-styled-components`,
-    `gatsby-plugin-typescript`
+    `gatsby-plugin-offline`
   ]
 };
