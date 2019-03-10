@@ -20,10 +20,10 @@ module.exports = {
     {
       resolve: `gatsby-source-trakt-tmdb`,
       options: {
-        limit: 6,
         traktApiKey: process.env.TRAKT_API_KEY,
         username: "wirtzdan",
-        tmdbApiKey: process.env.TMDB_API_KEY
+        tmdbApiKey: process.env.TMDB_API_KEY,
+        limit: 10
       }
     },
     {
