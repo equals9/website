@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Text, CheckBox } from "grommet";
 import { Section } from "../common/";
+import Link from "./link";
 import ThemeContext from "../../util/context";
 
 const Footer = () => (
@@ -8,16 +9,14 @@ const Footer = () => (
     {theme => (
       <Section
         background={theme.dark ? "dark-2" : "light-2"}
-        pad={{ vertical: "small" }}
+        pad={{ vertical: "xsmall" }}
       >
-        <Box direction="row" justify="between">
+        <Box direction="row-responsive" justify="between">
           <Text> Designed and built by Daniel Wirtz </Text>
-          <CheckBox
-            label={theme.dark ? "Dark" : "Light"}
-            checked={theme.dark}
-            onChange={theme.toggleDark}
-            toggle
-          />
+          <Box direction="row" gap="small" alignSelf="center">
+            <Link to="/disclaimer" label="Disclaimer" />
+            <Link to="/privacy" label="Privacy" />
+          </Box>
         </Box>
       </Section>
     )}
@@ -25,3 +24,12 @@ const Footer = () => (
 );
 
 export default Footer;
+
+{
+  /* <CheckBox
+  label={theme.dark ? "Dark" : "Light"}
+  checked={theme.dark}
+  onChange={theme.toggleDark}
+  toggle
+/> */
+}
