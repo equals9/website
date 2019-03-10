@@ -16,6 +16,12 @@ const Footer = () => (
           <Box direction="row" gap="small" alignSelf="center">
             <Link to="/disclaimer" label="Disclaimer" />
             <Link to="/privacy" label="Privacy" />
+            <CheckBox
+              label={theme.dark ? "Dark" : "Light"}
+              checked={theme.dark}
+              onChange={theme.toggleDark}
+              toggle
+            />
           </Box>
         </Box>
       </Section>
@@ -24,12 +30,3 @@ const Footer = () => (
 );
 
 export default Footer;
-
-{
-  /* <CheckBox
-  label={theme.dark ? "Dark" : "Light"}
-  checked={theme.dark}
-  onChange={theme.toggleDark}
-  toggle
-/> */
-}
