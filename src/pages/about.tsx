@@ -19,9 +19,6 @@ const About = ({ data }) => (
           <Section background={theme.dark ? "dark-1" : "light-1"}>
             <RecentMovies data={data.allTraktWatchedMovie.edges} />
           </Section>
-          <Section background={theme.dark ? "dark-1" : "light-1"}>
-            <RecentMovies data={data.allTraktWatchedMovie.edges} />
-          </Section>
         </>
       )}
     </ThemeContext.Consumer>
