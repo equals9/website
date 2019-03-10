@@ -38,15 +38,19 @@ const Gallery = ({ images, itemsPerRow: itemsPerRowByBreakpoints = [1] }) => {
             )}
           >
             <StyledImg src={image.baseUrl} />
-            <Text color="light-5" size="xsmall">
+            <Caption color="light-5" size="xsmall">
               {image.mediaMetadata.creationTime}
-            </Text>
+            </Caption>
           </StyledBox>
         </>
       ))}
     </StyledGalleryWrapper>
   );
 };
+
+const Caption = styled(Text)`
+  font-family: "Inconsolata", monospace;
+`;
 
 const StyledBox = styled(Box)`
   display: inline-block;

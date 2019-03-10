@@ -15,11 +15,15 @@ const PosterCard = ({ image, last_watched_at }) => (
     >
       <StyledImage fluid={image} />
     </Box>
-    <Text color="light-5" size="small">
+    <Caption color="light-5" size="small">
       {last_watched_at}
-    </Text>
+    </Caption>
   </Box>
 );
+
+const Caption = styled(Text)`
+  font-family: "Inconsolata", monospace;
+`;
 
 const StyledImage = styled(Image)`
   object-fit: contain;
