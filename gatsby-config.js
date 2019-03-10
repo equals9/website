@@ -19,10 +19,10 @@ module.exports = {
     {
       resolve: `gatsby-source-trakt-tmdb`,
       options: {
+        limit: 6,
         traktApiKey: process.env.TRAKT_API_KEY,
         username: "wirtzdan",
-        tmdbApiKey: process.env.TMDB_API_KEY,
-        limit: 10
+        tmdbApiKey: process.env.TMDB_API_KEY
       }
     },
     `gatsby-plugin-transition-link`,
@@ -31,7 +31,7 @@ module.exports = {
       options: {
         clientId: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        albums: ["Webseite"]
+        albums: ["Webseite2"]
         // if you only have one album pass it as an array
       }
     },
