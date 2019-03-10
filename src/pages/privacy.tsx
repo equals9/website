@@ -1,6 +1,6 @@
 import React from "react";
 import { Layout, Section, Container } from "../components/common/index";
-import { Box } from "grommet";
+import { Box, Text } from "grommet";
 
 const Privacy = () => (
   <Layout>
