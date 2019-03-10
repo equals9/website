@@ -1,11 +1,11 @@
 import React from "react";
+import RecentEpisodes from "../components/recentEpisodes";
 import RecentMovies from "../components/recentMovies";
-import { graphql } from "gatsby";
-import { Layout, Section } from "../components/common";
-import { Heading } from "grommet";
 import ThemeContext from "../util/context";
+import { Heading } from "grommet";
+import { Layout, Section } from "../components/common";
 
-const About = ({ data }) => (
+const About = () => (
   <Layout>
     <ThemeContext.Consumer>
       {theme => (
@@ -17,38 +17,15 @@ const About = ({ data }) => (
             </Heading>
           </Section>
           <Section background={theme.dark ? "dark-1" : "light-1"}>
-            <RecentMovies data={data.allTraktWatchedMovie.edges} />
+            <RecentMovies limit={6} />
+          </Section>
+          <Section background={theme.dark ? "dark-1" : "light-1"}>
+            <RecentEpisodes limit={6} />
           </Section>
         </>
       )}
     </ThemeContext.Consumer>
   </Layout>
 );
-
-export const query = graphql`
-  query {
-    allTraktWatchedMovie(
-      limit: 6
-      sort: { fields: last_watched_at, order: DESC }
-    ) {
-      edges {
-        node {
-          last_watched_at(fromNow: true)
-          tmdb_metadata {
-            poster {
-              localFile {
-                childImageSharp {
-                  fluid {
-                    ...GatsbyImageSharpFluid_withWebp
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
 
 export default About;
