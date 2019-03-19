@@ -17,7 +17,7 @@ const Photography = ({ data }) => (
           </Section>
           <Section background={theme.dark ? "dark-1" : "light-1"}>
             <Gallery
-              images={data.googlePhotos.edges.map(({ node }) => ({
+              images={data.allGalleryYaml.edges.map(({ node }) => ({
                 ...node
               }))}
               itemsPerRow={[2, 3]}
@@ -30,17 +30,21 @@ const Photography = ({ data }) => (
 );
 
 export const query = graphql`
-  query photoQuery {
-    googlePhotos: allGooglePhoto(
-      sort: { fields: [mediaMetadata___creationTime], order: DESC }
-    ) {
+  query {
+    allGalleryYaml {
       edges {
         node {
-          baseUrl
-          mediaMetadata {
-            creationTime(formatString: "MMMM DD, YYYY")
-            width
-            height
+          title
+          author
+          image {
+            childImageSharp {
+              fluid {
+                aspectRatio
+
+                # Use gatsby-image later for better user experience
+                ...GatsbyImageSharpFluid
+              }
+            }
           }
         }
       }

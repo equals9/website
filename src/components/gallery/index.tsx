@@ -2,15 +2,10 @@ import Image from "gatsby-image";
 import React from "react";
 import styled from "styled-components";
 import { Box } from "rebass";
-import { Text } from "grommet";
 import { chunk, sum } from "lodash";
 
 const Gallery = ({ images, itemsPerRow: itemsPerRowByBreakpoints = [1] }) => {
-  const aspectRatios = images.map(image => {
-    return image.mediaMetadata.width / image.mediaMetadata.height;
-  });
-
-  console.log("TCL: Gallery -> aspectRatios", aspectRatios);
+  const aspectRatios = images.map(image => image.aspectRatio);
 
   const rowAspectRatioSumsByBreakpoints = itemsPerRowByBreakpoints.map(
     itemsPerRow =>
@@ -22,35 +17,26 @@ const Gallery = ({ images, itemsPerRow: itemsPerRowByBreakpoints = [1] }) => {
   return (
     <StyledGalleryWrapper>
       {images.map((image, i) => (
-        <>
-          <StyledBox
-            width={rowAspectRatioSumsByBreakpoints.map(
-              // Return a value for each breakpoint
-              (rowAspectRatioSums, j) => {
-                // Find out which row the image is in and get its aspect ratio sum
-                const rowIndex = Math.floor(i / itemsPerRowByBreakpoints[j]);
-                const rowAspectRatioSum = rowAspectRatioSums[rowIndex];
-                const imgAspectRatio =
-                  image.mediaMetadata.width / image.mediaMetadata.height;
+        <StyledBox
+          key={image.src}
+          title={image.caption}
+          width={rowAspectRatioSumsByBreakpoints.map(
+            // Return a value for each breakpoint
+            (rowAspectRatioSums, j) => {
+              // Find out which row the image is in and get its aspect ratio sum
+              const rowIndex = Math.floor(i / itemsPerRowByBreakpoints[j]);
+              const rowAspectRatioSum = rowAspectRatioSums[rowIndex];
 
-                return `${(imgAspectRatio / rowAspectRatioSum) * 100}%`;
-              }
-            )}
-          >
-            <StyledImg src={image.baseUrl} />
-            <Caption color="light-5" size="xsmall">
-              {image.mediaMetadata.creationTime}
-            </Caption>
-          </StyledBox>
-        </>
+              return `${(image.aspectRatio / rowAspectRatioSum) * 100}%`;
+            }
+          )}
+        >
+          <Image fluid={image} />
+        </StyledBox>
       ))}
     </StyledGalleryWrapper>
   );
 };
-
-const Caption = styled(Text)`
-  font-family: "Inconsolata", monospace;
-`;
 
 const StyledBox = styled(Box)`
   display: inline-block;
@@ -58,15 +44,11 @@ const StyledBox = styled(Box)`
   transition: filter 0.3s;
   border-radius: 6px;
 
-  padding: 1rem;
-`;
-
-const StyledImg = styled.img`
-  border-radius: 4px;
+  padding: 1em;
 `;
 
 const StyledGalleryWrapper = styled(Box)`
-  margin: -1rem;
+  margin: -1em;
 `;
 
 export default Gallery;

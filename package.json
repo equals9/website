@@ -33,7 +33,6 @@
     "gatsby-remark-images": "^3.0.3",
     "gatsby-remark-smartypants": "^2.0.8",
     "gatsby-source-filesystem": "^2.0.20",
-    "gatsby-source-google-photos": "^1.0.2",
     "gatsby-source-spotify": "^1.2.2",
     "gatsby-source-trakt-tmdb": "^1.0.8",
     "gatsby-transformer-remark": "^2.2.3",

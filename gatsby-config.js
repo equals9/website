@@ -27,14 +27,6 @@ module.exports = {
       }
     },
     {
-      resolve: `gatsby-source-google-photos`,
-      options: {
-        clientId: process.env.GOOGLE_CLIENT_ID,
-        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        albums: ["Webseite2"]
-      }
-    },
-    {
       resolve: `gatsby-source-spotify`,
       options: {
         clientId: process.env.SPOTIFY_CLIENT_ID,
@@ -53,9 +45,9 @@ module.exports = {
         imagePath: "baseUrl"
       }
     },
+    `gatsby-transformer-yaml`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
-    `gatsby-transformer-yaml`,
     `gatsby-plugin-transition-link`,
     {
       resolve: `gatsby-plugin-google-analytics`,
